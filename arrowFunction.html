@@ -1,0 +1,62 @@
+<script>
+    //// 화살표 함수(Arrow Function) 예제
+
+    // 함수 선언 전에 호출 가능
+    greetGeneral();
+
+    // 일반적인 함수 선언문
+    // 스코프(현재 어플리케이션의 전체범위)의 상단으로 호이스팅됨.
+    function greetGeneral() {
+        console.log("Hello Everyone");
+    }
+    // 다음과 같이 greet()라는 화살표 함수선언 전에 호출 불가
+    // greet(); // [오류] cannot access 'great'
+
+    // 예제1: 화살표 함수
+    // (함수)스코프 범위로 호이스팅 안됨.
+    const greet = () => {
+        console.log("Hello!");
+    };
+    greet(); // 화살표 함수 선언 후에만 사용가능
+
+    // // 예제2: 매개변수가 있는 화살표 변수
+    // const multiply = (a, b) => {
+    //     return a * b;
+    // }
+    // console.log(multiply(2, 3)); // 출력: 6
+
+    const multiply = (a, b) => a * b;
+    console.log(multiply(2, 3));
+
+    // 예제3: 단일 표현식 화살표 함수 (Implicit Return)
+    const square = x => x * x;
+    console.log(square(5)); // 출력: 25
+
+    // 예제4: 객체 리터럴 반환 화살표 함수
+    // 생성자 함수와 같은 기능의 화살표 함수
+    //const createPerson = (name, age) => ({ name, age });
+    
+    function createPerson(name, age) {
+        return {name, age};
+    }
+
+    const person = createPerson("John", 25);
+    console.log(person); // 출력 : {name : 'John', age : 25}
+
+    // 생성자 함수
+    // 자바스크립트 객체를 찍어내주는(만들어주는) 역할
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    // 예제5: 화살표 함수와  forEach() 메소드
+    const person1 = new Person("현석", 25);
+    const person2 = new Person("장군", 27);
+    const person3 = new Person("원수", 30);
+    // person Object담을 배열 선언
+    const personList = [];
+    personList.push(person1); // 배열에 person 추가
+    personList.push(person2);
+    personList.push(person3);
+    personList.forEach(p => {console.log(p.name, p.age)});
+</script>
